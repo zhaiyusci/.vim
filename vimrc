@@ -193,6 +193,16 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 set pastetoggle=<F2>
+nnoremap <silent> <leader>m :call Mousetoggle() <CR>
+function Mousetoggle()
+	if &mouse == ""
+		let &mouse = "a"
+		echo "mouse enabled (=" . &mouse . ")"
+	else
+		let &mouse = ""
+		echo "mouse disabled"
+	endif
+endfunction
 " set clipboard+=unnamedplus
 
 " Niji - rainbow parentheses plugin 
