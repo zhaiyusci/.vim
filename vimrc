@@ -188,10 +188,10 @@ nnoremap j gj
 nnoremap k gk
 
 " Easy window navigation
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
 set pastetoggle=<F2>
 nnoremap <silent> <leader>m :call Mousetoggle() <CR>
 function Mousetoggle()
