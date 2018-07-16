@@ -197,10 +197,10 @@ nnoremap <silent> <leader>m :call Mousetoggle() <CR>
 function Mousetoggle()
 	if &mouse == ""
 		let &mouse = "a"
-		echo "mouse enabled (=" . &mouse . ")"
+    echo "Mouse enabled."
 	else
 		let &mouse = ""
-		echo "mouse disabled"
+    echo "Mouse disabled."
 	endif
 endfunction
 " set clipboard+=unnamedplus
@@ -213,6 +213,8 @@ let g:NERDSpaceDelims = 1
 " source ~/.vim/bundle/ctrlp.vim
 
 let g:rust_recommended_style = 0
+let fortran_do_enddo=1
+let g:ale_sign_column_always=1
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
