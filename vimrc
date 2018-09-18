@@ -216,7 +216,4 @@ let g:rust_recommended_style = 0
 let fortran_do_enddo=1
 let g:ale_sign_column_always=1
 
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-
-iabbrev @@ Yu Zhai <me@zhaiyusci.net>
+let g:latex_to_unicode_auto = 1
