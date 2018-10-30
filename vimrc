@@ -214,6 +214,6 @@ let g:NERDSpaceDelims = 1
 
 let g:rust_recommended_style = 0
 let fortran_do_enddo=1
-let g:ale_sign_column_always=1
+" let g:ale_sign_column_always=1
 
 let g:latex_to_unicode_auto = 1
