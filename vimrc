@@ -116,8 +116,8 @@ endif
 set t_Co=256
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h9.5  
 "colorscheme twilight-z
-" colorscheme evening-z
-colorscheme 3dglasses-z
+colorscheme evening-z
+" colorscheme 3dglasses-z
 set number
 " set ic                            " Ignore Case (no neccessary unless we use fortran 
 set foldmethod=marker             " the default marker is {{{     }}}
@@ -217,3 +217,10 @@ let fortran_do_enddo=1
 " let g:ale_sign_column_always=1
 
 let g:latex_to_unicode_auto = 1
+
+set colorcolumn=81
+
+
+nnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+vnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
+
