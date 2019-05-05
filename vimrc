@@ -213,13 +213,15 @@ let g:NERDSpaceDelims = 1
 " source ~/.vim/bundle/ctrlp.vim
 
 let g:rust_recommended_style = 0
+
+" Fortran
 let fortran_do_enddo=1
 " let g:ale_sign_column_always=1
 
+" Julia
 let g:latex_to_unicode_auto = 1
 
-set colorcolumn=81
-
+set colorcolumn=73
 
 nnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 vnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
