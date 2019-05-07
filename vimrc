@@ -226,3 +226,5 @@ set colorcolumn=73
 nnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 vnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 
+" vim-clang
+
