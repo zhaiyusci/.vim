@@ -7,15 +7,24 @@ set termencoding=utf-8
 "fileformat
 set fileformat=unix
 
-" pathogen, the vim plugin manager 
-execute pathogen#infect()     
+call plug#begin()
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'gko/vim-coloresque'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'losingkeys/vim-niji'
+Plug 'tpope/vim-surround'
+Plug 'Shougo/neocomplete.vim'
+call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
 if v:progname =~? "evim"
-    finish
+  finish
 endif
 
 " allow backspacing over everything in insert mode
@@ -44,7 +53,7 @@ inoremap <C-U> <C-G>u<C-U>
 " but it may not work well with the terminal emulator on windows, when using
 " ssh
 if has('mouse')
-    set mouse=
+  set mouse=
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -56,42 +65,42 @@ endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-    " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
-    " 'cindent' is on in C files, etc.
-    " Also load indent files, to automatically do language-dependent indenting.
-    filetype plugin indent on
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
 
-    " Put these in an autocmd group, so that we can delete them easily.
-    augroup vimrcEx
-        au!
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+    au!
 
-        " For all text files set 'textwidth' to 78 characters.
-        "autocmd FileType text setlocal textwidth=78 " Yu Zhai 2016-08-02
+    " For all text files set 'textwidth' to 78 characters.
+    "autocmd FileType text setlocal textwidth=78 " Yu Zhai 2016-08-02
 
-        " When editing a file, always jump to the last known cursor position.
-        " Don't do it when the position is invalid or when inside an event handler
-        " (happens when dropping a file on gvim).
-        " Also don't do it when the mark is in the first line, that is the default
-        " position when opening a file.
-        autocmd BufReadPost *
-                    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-                    \   exe "normal! g`\"" |
-                    \ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+          \ if line("'\"") > 1 && line("'\"") <= line("$") |
+          \   exe "normal! g`\"" |
+          \ endif
 
-    augroup END
+  augroup END
 
 else
-    " always set autoindenting on
-    set autoindent		
+  " always set autoindenting on
+  set autoindent		
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-                \ | wincmd p | diffthis
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
 endif
 
 " ----------------------------------------------------------------------
@@ -106,12 +115,12 @@ syntax on
 set hidden
 
 if v:progname =~? "gvim"
-    "colorscheme evening-z
-    "colorscheme twilight
-    " Change for the using of airline
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-    " github page https://github.com/bling/vim-airline 
-    "set guifontwide=DFKai-SB:h10.5
+  "colorscheme evening-z
+  "colorscheme twilight
+  " Change for the using of airline
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+  " github page https://github.com/bling/vim-airline 
+  "set guifontwide=DFKai-SB:h10.5
 endif
 set t_Co=256
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h9.5  
@@ -129,31 +138,31 @@ nnoremap <space> za
 " set diffexpr=MyDiff()
 
 " function MyDiff()
-    " let opt = '-a --binary '
-    " if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    " if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    " let arg1 = v:fname_in
-    " if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    " let arg2 = v:fname_new
-    " if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    " let arg3 = v:fname_out
-    " if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    " let eq = ''
-    " if $VIMRUNTIME =~ ' '
-        " if &sh =~ '\<cmd'
-            " let cmd = '""' . $VIMRUNTIME . '\diff"'
-            " let eq = '"'
-        " else
-            " let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-        " endif
-    " else
-        " let cmd = $VIMRUNTIME . '\diff'
-    " endif
-    " silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+" let opt = '-a --binary '
+" if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+" if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+" let arg1 = v:fname_in
+" if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+" let arg2 = v:fname_new
+" if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+" let arg3 = v:fname_out
+" if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+" let eq = ''
+" if $VIMRUNTIME =~ ' '
+" if &sh =~ '\<cmd'
+" let cmd = '""' . $VIMRUNTIME . '\diff"'
+" let eq = '"'
+" else
+" let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+" endif
+" else
+" let cmd = $VIMRUNTIME . '\diff'
+" endif
+" silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 " endfunction
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 "airline begin
@@ -195,13 +204,13 @@ noremap <c-l> <c-w>l
 set pastetoggle=<F2>
 nnoremap <silent> <leader>m :call Mousetoggle() <CR>
 function Mousetoggle()
-	if &mouse == ""
-		let &mouse = "a"
+  if &mouse == ""
+    let &mouse = "a"
     echo "Mouse enabled."
-	else
-		let &mouse = ""
+  else
+    let &mouse = ""
     echo "Mouse disabled."
-	endif
+  endif
 endfunction
 " set clipboard+=unnamedplus
 
@@ -226,3 +235,75 @@ set colorcolumn=73
 nnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 vnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
 
+" Use neocomplete
+
+"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
