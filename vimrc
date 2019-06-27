@@ -173,7 +173,7 @@ set noshowmode
 let g:airline_theme="light"
 "airline end
 
-filetype plugin on
+" filetype plugin on
 
 " tab settings
 set smarttab  
@@ -233,9 +233,6 @@ let g:latex_to_unicode_auto = 1
 
 set colorcolumn=73
 
-nnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
-vnoremap <leader>f :py3file /usr/share/clang/clang-format-6.0/clang-format.py<CR>
-
 " Use neocomplete
 
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -294,7 +291,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=python3complete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
