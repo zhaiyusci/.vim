@@ -194,8 +194,8 @@ nnoremap <silent> <F6> :set wrap! <CR>
 " spell check
 nnoremap <silent> <F7> :set spell! <CR>
 
-nnoremap j gj
-nnoremap k gk
+noremap j gj
+noremap k gk
 
 " Easy window navigation
 noremap <c-h> <c-w>h
