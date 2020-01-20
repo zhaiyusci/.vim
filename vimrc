@@ -8,8 +8,8 @@ set termencoding=utf-8
 set fileformat=unix
 
 call plug#begin()
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'gko/vim-coloresque'
