@@ -308,6 +308,7 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " For UltiSnips
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsExpandTrigger = '<C-e>'
+let g:UltiSnipsJumpForwardTrigger = '<TAB>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
+
