@@ -215,6 +215,8 @@ function Mousetoggle()
   endif
 endfunction
 " set clipboard+=unnamedplus
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap W! w !sudo tee > /dev/null %
 
 " Niji - rainbow parentheses plugin 
 let g:niji_matching_filetypes = ['lisp', 'scheme', 'clojure', 'haskell']
