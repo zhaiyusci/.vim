@@ -19,6 +19,7 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'zhaiyusci/onedark.vim'
 call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -57,13 +58,6 @@ inoremap <C-U> <C-G>u<C-U>
 if has('mouse')
   set mouse=
 endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-"if &t_Co > 2 || has("gui_running")
-"syntax on
-"set nohlsearch
-"endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -113,22 +107,12 @@ set go=m                        " only show the menu in the GUI
 
 "set colorcolumn=80              "set a highlight at c.80 for most condition
 
-syntax on
 set hidden
 
 if v:progname =~? "gvim"
-  "colorscheme evening-z
-  "colorscheme twilight
-  " Change for the using of airline
   set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-  " github page https://github.com/bling/vim-airline 
-  "set guifontwide=DFKai-SB:h10.5
 endif
 set t_Co=256
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h9.5  
-"colorscheme twilight-z
-colorscheme evening-z
-" colorscheme 3dglasses-z
 set number
 " set ic                            " Ignore Case (no neccessary unless we use fortran 
 set foldmethod=marker             " the default marker is {{{     }}}
@@ -171,8 +155,7 @@ endif
 set laststatus=2
 let g:airline_powerline_fonts=1
 set noshowmode
-let g:airline_theme="light"
-"airline end
+let g:airline_theme="onedark"
 
 " filetype plugin on
 
@@ -313,4 +296,29 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 let g:UltiSnipsExpandTrigger = '<C-e>'
 let g:UltiSnipsJumpForwardTrigger = '<TAB>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
+
+" For onedark.vim colorscheme
+" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+" If you're using tmux version 2.2 or later, 
+" you can remove the outermost $TMUX check and use tmux's 24-bit color support
+" (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    " For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  " For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  " Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+let g:onedark_hide_endofbuffer = 1
+let g:onedark_terminal_italics = 1
+let g:onedark_termcolors=256
+
+syntax on
+colorscheme onedark
 
