@@ -17,8 +17,6 @@ Plug 'losingkeys/vim-niji'
 Plug 'tpope/vim-surround'
 Plug 'Shougo/neocomplete.vim'
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'zhaiyusci/onedark.vim'
 call plug#end()
 
@@ -198,8 +196,9 @@ function Mousetoggle()
   endif
 endfunction
 " set clipboard+=unnamedplus
+"
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap W! w !sudo tee > /dev/null %
+command SaveWithSudo :w !sudo tee > /dev/null %
 
 " Niji - rainbow parentheses plugin 
 let g:niji_matching_filetypes = ['lisp', 'scheme', 'clojure', 'haskell']
@@ -291,11 +290,6 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-" For UltiSnips
-let g:UltiSnipsExpandTrigger = '<C-e>'
-let g:UltiSnipsJumpForwardTrigger = '<TAB>'
-let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 
 " For onedark.vim colorscheme
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
