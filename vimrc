@@ -17,7 +17,7 @@ Plug 'losingkeys/vim-niji'
 Plug 'tpope/vim-surround'
 Plug 'Shougo/neocomplete.vim'
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'zhaiyusci/onedark.vim'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
