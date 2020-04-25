@@ -18,6 +18,8 @@ Plug 'tpope/vim-surround'
 Plug 'Shougo/neocomplete.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -315,4 +317,32 @@ let g:onedark_termcolors=256
 
 syntax on
 colorscheme onedark
+
+" ctags
+set tags=./.tags;,.tags
+
+" gutentags 
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+" ale
+" let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14 -I/usr/include/eigen3'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
 
