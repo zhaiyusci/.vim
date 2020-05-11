@@ -340,9 +340,16 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
+let g:ale_linters_explicit = 1
 
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14 -I/usr/include/eigen3'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11 -I/usr/include/eigen3'
+let g:ale_c_clang_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_clang_options = '-Wall -O2 -std=c++11 -I/usr/include/eigen3'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+
+let g:ale_linters = {
+\   'cpp' : ['clang', 'cppcheck'],
+\}
 
