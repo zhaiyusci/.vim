@@ -213,6 +213,8 @@ let g:rust_recommended_style = 0
 
 " Fortran
 let fortran_do_enddo=1
+let fortran_free_source=1
+let fortran_more_precise=1
 " let g:ale_sign_column_always=1
 
 " Julia
@@ -345,7 +347,7 @@ let g:ale_linters_explicit = 1
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11 -I/usr/include/eigen3'
 let g:ale_c_clang_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_clang_options = '-Wall -O2 -std=c++11 -I/usr/include/eigen3'
+let g:ale_cpp_clang_options = '-Wall -O2 -std=c++11 -I/usr/include/eigen3 -D __YDVR_SCALAR__=double -I/home/yuzhai/Documents/ydvr/src'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 
