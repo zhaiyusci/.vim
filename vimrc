@@ -215,7 +215,7 @@ let g:rust_recommended_style = 0
 
 " Fortran
 let fortran_do_enddo=1
-let fortran_free_source=1
+" let fortran_free_source=1
 let fortran_more_precise=1
 " let g:ale_sign_column_always=1
 
