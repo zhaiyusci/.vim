@@ -1,4 +1,5 @@
 "Language settings
+scriptencoding utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set encoding=utf-8
 set termencoding=utf-8
@@ -16,7 +17,7 @@ Plug 'gko/vim-coloresque'
 Plug 'losingkeys/vim-niji'
 Plug 'tpope/vim-surround'
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim'
@@ -152,14 +153,17 @@ nnoremap <space> za
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline_symbols.space = "\ua0"
 
-"airline begin
+" airline begin
 set laststatus=2
 let g:airline_powerline_fonts=1
 set noshowmode
 let g:airline_theme="onedark"
+let g:airline_experimental = 0
 
 " filetype plugin on
+autocmd BufNewFile,BufRead,BufEnter * if &ft == '' | set ft=Unknown | endif
 
 " tab settings
 set smarttab  
@@ -295,3 +299,4 @@ function! s:check_back_space() abort "{{{
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction " }}}
+
