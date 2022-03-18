@@ -277,26 +277,29 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_linters_explicit = 1
 
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11 -I/usr/include/eigen3'
-let g:ale_c_clang_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_clang_options = '-Wall -O2 -std=c++11 -I/usr/include/eigen3 -D __YDVR_SCALAR__=double -I/home/yuzhai/Documents/ydvr/src'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
-
 let g:ale_linters = {
       \   'cpp' : ['clang', 'cppcheck'],
       \}
 
+" To use local vimrc
+set exrc
+set secure
+
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction " }}}
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
+let g:python3_host_prog = expand('/usr/bin/python')
+
+" function! s:check_back_space() abort 
+  " let col = col('.') - 1
+  " return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
+
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID> check_back_space() ? "\<TAB>" :
+      " \ deoplete#manual_complete()
 
