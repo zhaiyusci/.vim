@@ -197,10 +197,10 @@ nnoremap <silent> <leader>m :call Mousetoggle() <CR>
 function Mousetoggle()
   if &mouse == ""
     let &mouse = "a"
-    echo "Mouse enabled."
+    echo "Mouse is enabled."
   else
     let &mouse = ""
-    echo "Mouse disabled."
+    echo "Mouse is disabled."
   endif
 endfunction
 " set clipboard+=unnamedplus
