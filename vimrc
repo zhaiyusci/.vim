@@ -23,6 +23,7 @@ Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'tommason14/lammps.vim'
 call plug#end()
 
 " Use Vim settings, rather than Vi settings (much better!).
