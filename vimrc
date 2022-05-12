@@ -16,13 +16,18 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'gko/vim-coloresque'
 Plug 'losingkeys/vim-niji'
 Plug 'tpope/vim-surround'
-Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'JuliaEditorSupport/julia-vim'
+Plug 'zhaiyusci/julia-vim'
+" Plug '~/Documents/julia-vim'
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/deoplete-clangx'
+" Plug 'racer-rust/vim-racer'
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tommason14/lammps.vim'
 call plug#end()
 
@@ -113,9 +118,9 @@ set go=m                        " only show the menu in the GUI
 
 set hidden
 
-if v:progname =~? "gvim"
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-endif
+" if v:progname =~? "gvim"
+  " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+" endif
 set t_Co=256
 set number
 " set ic                            " Ignore Case (no neccessary unless we use fortran 
@@ -293,6 +298,8 @@ inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 let g:python3_host_prog = expand('/usr/bin/python')
+
+" set omnifunc=syntaxcomplete#Complete
 
 " function! s:check_back_space() abort 
   " let col = col('.') - 1
